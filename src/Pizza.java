@@ -24,4 +24,9 @@ public class Pizza {
     public String toString() {
         return "";
     }
+
+    //static method to print all available pizzas
+    public static void getAvailablePizzas() {
+
+    }
 }
