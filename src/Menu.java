@@ -13,11 +13,11 @@ public class Menu {
                 2: Vis ordreliste
                 3: Luk
                 """);
+
+            //handle userInput
+
+            //switch statement that calls other menu methods
         }
-
-        //handle userInput
-
-        //switch statement that calls other menu methods
 
     }
 
