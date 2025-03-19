@@ -10,7 +10,13 @@ public class Menu {
                 3: Luk
                 """);
 
-        //handle userInput with switch case here:
+        //handle userInput with switch case here
 
+    }
+
+    public static void addOrderMenu() {
+        System.out.println("Hvilken pizza vil du have?");
+
+        //handle userInput here
     }
 }
