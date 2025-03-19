@@ -31,7 +31,7 @@ public class Menu {
         //handle userInput and save it as a localTime type
     }
 
-    public static void printOrderList() {
+    public static void showOrdersMenu() {
 
         System.out.println("\n=== Ordreliste ===");
 
