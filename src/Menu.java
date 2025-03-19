@@ -11,8 +11,7 @@ public class Menu {
                 === Velkommen til Marios pizzaria! ===
                 1: Vis menu
                 2: Vis ordreliste
-                3: Luk
-                """);
+                3: Luk""");
 
             //handle userInput
 
