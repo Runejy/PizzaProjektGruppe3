@@ -17,19 +17,19 @@ public class Menu {
             userInput = UserInput.getUserInt(3);
 
             //switch statement that calls other menu methods
+            switch (userInput) {
+                case "1":
+                    //call menu that shows available pizzas
+                    break;
+                case "2":
+                    //call menu that shows all current orders
+                    showOrdersMenu();
+                    break;
+                case "3":
+                    return;
+            }
         }
 
-    }
-
-    public static void addOrderMenu() {
-
-        System.out.println("Hvilken pizza vil du have?");
-
-        //handle userInput here
-
-        //ask when the pizza will be collected
-
-        //handle userInput and save it as a localTime type
     }
 
     public static void showOrdersMenu() {
@@ -41,5 +41,20 @@ public class Menu {
         //print all orders as unordered list, sorted by time (soonest first)
 
         //options to add, complete or cancel an order
+    }
+
+    public static void addOrderMenu() {
+
+        while(true) {
+
+            System.out.println("Hvilken pizza vil du have?");
+
+            //handle userInput here
+            userInput = UserInput.getUserString();
+
+            //ask when the pizza will be collected
+
+            //handle userInput and save it as a localTime type
+        }
     }
 }
