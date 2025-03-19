@@ -39,10 +39,9 @@ public class UserInput {
                 continue;
             }
 
-            break;
+            //convert userInt to String and return it
+            return String.valueOf(userInt);
         }
 
-        //convert userInt to String and return it
-        return String.valueOf(userInt);
     }
 }
