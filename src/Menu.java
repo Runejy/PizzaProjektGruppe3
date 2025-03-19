@@ -14,6 +14,7 @@ public class Menu {
                 3: Luk""");
 
             //handle userInput
+            userInput = UserInput.getUserInt(3);
 
             //switch statement that calls other menu methods
         }

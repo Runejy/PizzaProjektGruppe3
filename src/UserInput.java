@@ -7,7 +7,7 @@ public class UserInput {
     private static final Scanner sc = new Scanner(System.in);
 
     //Method for getting userInput when user should not pick from a list
-    public static String getUserInput() {
+    public static String getUserString() {
 
         try {
             userInput = sc.nextLine();
@@ -18,7 +18,7 @@ public class UserInput {
         return userInput;
     }
 
-    public static String getUserInput(int numOptions) {
+    public static String getUserInt(int numOptions) {
 
         int userInt;
 
@@ -39,8 +39,10 @@ public class UserInput {
                 continue;
             }
 
-            //convert userInt to String and return it
-            return String.valueOf(userInt);
+            break;
         }
+
+        //convert userInt to String and return it
+        return String.valueOf(userInt);
     }
 }
