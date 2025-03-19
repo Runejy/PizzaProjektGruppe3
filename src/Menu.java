@@ -1,6 +1,6 @@
 public class Menu {
-    //scanner object
-    //userInput
+
+    private static String userInput;
 
     public static void mainMenu() {
 
