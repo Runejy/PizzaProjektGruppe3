@@ -4,12 +4,16 @@ public class Menu {
 
     public static void mainMenu() {
 
-        System.out.println("""
+        //main menu loop
+        while(true) {
+
+            System.out.println("""
                 === Velkommen til Marios pizzaria! ===
                 1: Vis menu
                 2: Vis ordreliste
                 3: Luk
                 """);
+        }
 
         //handle userInput
 
