@@ -1,4 +1,4 @@
-public class Menu {
+public class Navigation {
 
     private static String userInput;
 
