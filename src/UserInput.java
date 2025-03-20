@@ -6,6 +6,8 @@ public class UserInput {
 
     private static final Scanner sc = new Scanner(System.in);
 
+    private static int userInt;
+
     //Method for getting userInput when user should not pick from a list
     public static String getUserString() {
 
@@ -18,9 +20,8 @@ public class UserInput {
         return userInput;
     }
 
+    //method for getting userInput when user should pick from a list
     public static String getUserInt(int numOptions) {
-
-        int userInt;
 
         while(true) {
 
@@ -43,5 +44,24 @@ public class UserInput {
             return String.valueOf(userInt);
         }
 
+    }
+
+    //method for getting any number from user when not picking from a list
+    public static String getUserInt() {
+
+        while(true) {
+
+            //get user input as integer, making sure they enter a number
+            try {
+                userInt = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Indtast venligst et gyldigt nummer");
+                sc.nextLine();
+                continue;
+            }
+
+            //convert userInt to String and return it
+            return String.valueOf(userInt);
+        }
     }
 }
