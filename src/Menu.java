@@ -44,13 +44,13 @@ public class Menu {
             throw new RuntimeException("Menu filen kunne ikke findes på computeren!");
         }
 
-        //build CSV parser using external library openCSV
+        //build CSV parser using the openCSV library
         CSVParser parser = new CSVParserBuilder()
                 .withSeparator(',')
                 .withIgnoreQuotations(false)
                 .build();
 
-        //build CSV reader using openCSV
+        //build CSV reader using openCSV in try-with-resources block (auto closes csvReader after use
         try (CSVReader csvReader = new CSVReaderBuilder(Files.newBufferedReader(menuFile.toPath()))
                 .withCSVParser(parser)
                 .withSkipLines(0)
@@ -79,7 +79,6 @@ public class Menu {
             double price = Double.parseDouble(pizza[3]);
 
             PizzaType pizzaType = new PizzaType(number, name, description, price);
-//            menu.add(pizzaType);
         }
     }
 }

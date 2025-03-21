@@ -13,6 +13,8 @@ public class PizzaType {
         this.name = name;
         this.description = description;
         this.price = price;
+
+        //automatically adds pizzaType to menu, to ensure that all types of pizza are shown in menu
         Menu.add(this);
     }
 
