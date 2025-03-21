@@ -42,7 +42,7 @@ public class Order {
 
     //getPizzas (return all ordered pizzas, maybe as an arraylist)
     public int getOrder() {
-        return order;
+        return this;
     }
 
     //toString (return all pertinent information about order as string)
