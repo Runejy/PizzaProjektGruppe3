@@ -28,10 +28,6 @@ public class Menu {
         }
     }
 
-    public static int getLength() {
-        return menuList.size();
-    }
-
     public static void initializeMenu() {
 
         //check if  menu file exists
