@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public class Menu {
@@ -20,7 +21,13 @@ public class Menu {
     }
 
     public static void initializeMenu() {
-        //check if file exists
+
+        //check if  menu file exists
+        File menu = new File("menu.csv");
+
+        if(!menu.exists() && !menu.isDirectory()) {
+            throw new RuntimeException("Menu filen kunne ikke findes på computeren!");
+        }
 
         //read menu.csv
 
