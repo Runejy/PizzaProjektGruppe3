@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class UserInput {
+public class Input {
 
     private static String userInput;
 

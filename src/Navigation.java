@@ -14,7 +14,7 @@ public class Navigation {
                 3: Luk""");
 
             //handle userInput
-            userInput = UserInput.getUserNumber(3);
+            userInput = Input.getUserNumber(3);
 
             //switch statement that calls other menu methods
             switch (userInput) {
@@ -55,7 +55,7 @@ public class Navigation {
             System.out.println("Hvilken pizza vil du have?");
 
             //handle userInput here
-            userInput = UserInput.getUserString();
+            userInput = Input.getUserString();
 
             //ask when the pizza will be collected
 
