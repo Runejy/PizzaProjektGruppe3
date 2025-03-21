@@ -14,12 +14,13 @@ public class Navigation {
                 3: Luk""");
 
             //handle userInput
-            userInput = UserInput.getUserInt(3);
+            userInput = UserInput.getUserNumber(3);
 
             //switch statement that calls other menu methods
             switch (userInput) {
                 case "1":
                     //call menu that shows available pizzas
+                    showAvailablePizzasMenu();
                     break;
                 case "2":
                     //call menu that shows all current orders
@@ -29,6 +30,10 @@ public class Navigation {
                     return;
             }
         }
+
+    }
+
+    public static void showAvailablePizzasMenu() {
 
     }
 

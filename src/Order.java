@@ -8,8 +8,6 @@ public class Order {
     int phoneNr;
     double totalPrice;
 
-
-    //private static ArrayList<Order> orders = new ArrayList<>();
     private static ArrayList<Order> orders = new ArrayList<>();
 
     public Order(int order, double time, String name, int phoneNr, double totalPrice) {
@@ -55,10 +53,6 @@ public class Order {
         System.out.println("Vælg venligst den pizza du vil have");
 
     }
-
-    //constructor method (remember to add order to orders ArrayList)
-
-    //---non-static methods---
 
     //---static methods---
 

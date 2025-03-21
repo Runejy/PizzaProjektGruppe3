@@ -21,7 +21,7 @@ public class UserInput {
     }
 
     //method for getting userInput when user should pick from a list
-    public static String getUserInt(int numOptions) {
+    public static String getUserNumber(int numOptions) {
 
         while(true) {
 
@@ -47,7 +47,7 @@ public class UserInput {
     }
 
     //method for getting any number from user when not picking from a list
-    public static String getUserInt() {
+    public static String getUserNumber() {
 
         while(true) {
 
