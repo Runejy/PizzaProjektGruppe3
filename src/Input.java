@@ -12,7 +12,8 @@ public class Input {
     public static String getUserString() {
 
         try {
-            userInput = sc.nextLine();
+            userInput = sc.next();
+            userInput += sc.nextLine();
         } catch (Exception e) {
             System.out.println("An error occured: " + e);
         }
