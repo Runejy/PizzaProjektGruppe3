@@ -6,33 +6,30 @@ import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Menu {
 
     //ArrayList for storing each pizzaType
-    private static ArrayList<PizzaType> menu = new ArrayList<>();
+    private static final ArrayList<PizzaType> menuList = new ArrayList<>();
 
     //ArrayList of String arrays for storing the info necessary for building each pizzaType object
-    private static ArrayList<String[]> pizzaInfo = new ArrayList<>();
+    private static final ArrayList<String[]> pizzaInfo = new ArrayList<>();
 
     public static void add(PizzaType pt) {
-        menu.add(pt);
+        menuList.add(pt);
     }
 
     public static void printMenu() {
 
-        for (PizzaType pt : menu) {
+        for (PizzaType pt : menuList) {
             System.out.println(pt);
         }
     }
 
     public static int getLength() {
-        return menu.size();
+        return menuList.size();
     }
 
     public static void initializeMenu() {
@@ -53,14 +50,9 @@ public class Menu {
         //build CSV reader using openCSV in try-with-resources block (auto closes csvReader after use
         try (CSVReader csvReader = new CSVReaderBuilder(Files.newBufferedReader(menuFile.toPath()))
                 .withCSVParser(parser)
-                .withSkipLines(0)
+                .withSkipLines(1)
                 .build()) {
 
-
-            //check if menu file is empty
-            if (csvReader.readNext() == null) {
-                throw new RuntimeException("Menuen er tom. Indsæt venligst minimum ét element på menuen");
-            }
 
             //read CSV file and send to pizzaInfo list
             String[] line;
@@ -79,6 +71,11 @@ public class Menu {
             double price = Double.parseDouble(pizza[3]);
 
             PizzaType pizzaType = new PizzaType(number, name, description, price);
+        }
+
+        //throw error if there are no pizzas in menu.csv
+        if (menuList.isEmpty()) {
+            throw new RuntimeException("Menuen er tom, indsæt minimum ét element på menuen!");
         }
     }
 }
