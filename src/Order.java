@@ -3,19 +3,17 @@ import java.util.Scanner;
 
 public class Order {
 
-    int order;
+    int pizzaID;
     double time;
     String name;
     int phoneNr;
     double totalPrice;
 
-    Scanner add = new Scanner(System.in);
-    String stringInput = add.nextLine();
+    Scanner input = new Scanner(System.in);
+    String stringInput = input.nextLine();
 
-    private static ArrayList<Order> orders = new ArrayList<>();
-
-    public Order(int order, double time, String name, int phoneNr, double totalPrice) {
-        this.order =order;
+    public Order(int pizzaID, double time, String name, int phoneNr, double totalPrice) {
+        this.pizzaID =pizzaID;
         this.name = name;
         this.time = time;
         this.phoneNr = phoneNr;
@@ -29,6 +27,39 @@ public class Order {
     public double getTotalPrice() {
         return totalPrice;
     }
+
+    //Display method (used as coupled with an object by . notation:
+    public void displaySpecificOrder() {
+        System.out.println("Pizza in preparation: " + pizzaID);
+        System.out.println("Name of customer: " + name);
+        System.out.println("Phone number: " + phoneNr);
+        System.out.println("Total price of this order: " + totalPrice);
+        System.out.println("__________________________________");
+    }
+
+    private static ArrayList<Order> orders = new ArrayList<>();
+
+    while(true) {
+        System.out.println("Please enter the order ID: of the pizza - press -1 to exit");
+        String pizzaID = input.nextLine();
+        if (pizzaID == -1) break;
+        System.out.println("Please enter the time of pizza being finished - press -1 to exit");
+        String time = input.nextLine();
+        if (time == -1) break;
+        System.out.println("Please enter name - press -1 to exit");
+        String name = input.nextLine();
+        if (name == -1) break;
+        System.out.println("Please enter phone number of the customer - press -1 to exit");
+        int phoneNr = input.nextInt();
+        if (phoneNr == -1) break;
+        System.out.println("Please enter the total price of this order - press -1 to exit");
+        double totalPrice = input.nextDouble();
+        if (totalPrice == -1) break;
+
+
+
+
+
     //mangler Scanner til telefonNr og en scanner til navn (Tiden er der en indbygget funktion til)
     // @Override
     //   public String toString() {
