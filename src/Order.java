@@ -12,6 +12,7 @@ public class Order {
     Scanner input = new Scanner(System.in);
     String stringInput = input.nextLine();
 
+    //constructor method (remember to add order to orders ArrayList)
     public Order(int pizzaID, double time, String name, int phoneNr, double totalPrice) {
         this.pizzaID =pizzaID;
         this.name = name;
@@ -20,8 +21,10 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
+    //---non-static methods---
+
     //getCollectionTime
-    public double getTime() {
+    public double getCollectionTime() {
         return time;
     }
 
@@ -46,7 +49,6 @@ public class Order {
     }
 
     //toString (return all pertinent information about order as string)
-    @Override
     public String toString() {
         return "";
     }
@@ -70,10 +72,6 @@ public class Order {
 
     //}
 
-    //constructor method (remember to add order to orders ArrayList)
-
-    //---non-static methods---
-
     //getPizzas (return all ordered pizzas, maybe as an arraylist)
 
     //getTotalPrice
@@ -83,8 +81,6 @@ public class Order {
     //getCustomerPhone
 
     //getCollectionTime
-
-    //toString (return all pertinent information about order as string)
 
     //---static methods---
 
