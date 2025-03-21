@@ -18,4 +18,13 @@ public class Menu {
     public static int getLength() {
         return menu.size();
     }
+
+    public static void initializeMenu() {
+        //check if file exists
+
+        //read menu.csv
+
+        //create pizzaType objects and store them in ArrayList
+
+    }
 }
