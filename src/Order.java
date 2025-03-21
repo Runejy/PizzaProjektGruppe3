@@ -41,7 +41,7 @@ public class Order {
     }
 
     //getPizzas (return all ordered pizzas, maybe as an arraylist)
-    public int getOrder() {
+    public Order getOrder() {
         return this;
     }
 
