@@ -38,7 +38,7 @@ public class Menu {
         File menuFile = new File("menu.csv");
 
         if(!menuFile.exists() && !menuFile.isDirectory()) {
-            throw new RuntimeException("Menu filen kunne ikke findes på computeren!");
+            throw new RuntimeException("Menu filen kunne ikke findes i denne folder!");
         }
 
         //build CSV parser using the openCSV library
