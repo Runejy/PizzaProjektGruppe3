@@ -81,10 +81,5 @@ public class Menu {
             PizzaType pizzaType = new PizzaType(number, name, description, price);
             menu.add(pizzaType);
         }
-
-        for (PizzaType pt : menu) {
-            System.out.println(pt.toString());
-        }
-
     }
 }
