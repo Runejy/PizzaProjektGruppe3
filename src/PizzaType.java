@@ -13,6 +13,7 @@ public class PizzaType {
         this.name = name;
         this.description = description;
         this.price = price;
+        Menu.add(this);
     }
 
     @Override

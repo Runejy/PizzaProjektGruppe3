@@ -79,7 +79,7 @@ public class Menu {
             double price = Double.parseDouble(pizza[3]);
 
             PizzaType pizzaType = new PizzaType(number, name, description, price);
-            menu.add(pizzaType);
+//            menu.add(pizzaType);
         }
     }
 }
