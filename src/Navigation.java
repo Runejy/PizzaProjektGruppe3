@@ -35,11 +35,15 @@ public class Navigation {
 
     public static void showAvailablePizzasMenu() {
 
+        System.out.println("=== MENU ===\n");
+        Menu.printMenu();
+        System.out.println("Skriv \"tilbage\" for at gå tilbage:");
+        userInput = Input.getUserString();
     }
 
     public static void showOrdersMenu() {
 
-        System.out.println("\n=== Ordreliste ===");
+        System.out.println("=== Ordreliste ===");
 
         //if order list is empty, print that
 
