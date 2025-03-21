@@ -71,6 +71,7 @@ public class Menu {
             double price = Double.parseDouble(pizza[3]);
 
             PizzaType pizzaType = new PizzaType(number, name, description, price);
+            Menu.add(pizzaType);
         }
 
         //throw error if there are no pizzas in menu.csv
