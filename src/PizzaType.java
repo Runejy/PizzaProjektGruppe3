@@ -3,16 +3,20 @@ import java.util.ArrayList;
 public class PizzaType {
 
     private String name;
-    private int price;
+    private double price;
     private int number;
     private String description;
     private static ArrayList<PizzaType> menu = new ArrayList<>();
 
-    public PizzaType(String name, int price, int number, String description) {
-        this.name = name;
-        this.price = price;
+    public PizzaType( int number, String name, String description, double price) {
         this.number = number;
+        this.name = name;
         this.description = description;
-        menu.add(this);
+        this.price = price;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%d: %s | %s | %.2f dkk",this.number, this.name, this.description, this.price);
     }
 }
