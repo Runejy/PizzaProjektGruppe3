@@ -14,4 +14,8 @@ public class Menu {
             System.out.println(pt);
         }
     }
+
+    public static int getLength() {
+        return menu.size();
+    }
 }
