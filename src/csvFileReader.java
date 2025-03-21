@@ -10,7 +10,7 @@ public class csvFileReader {
     public static void PizzaMenu() {
 
         // Use the correct RAW GitHub URL
-        String csvUrl = "https://raw.githubusercontent.com/Runejy/PizzaProjektGruppe3/main/PizzaMenu.csv";
+        String csvUrl = "https://raw.githubusercontent.com/Runejy/PizzaProjektGruppe3/main/menu.csv";
         ArrayList<String> pizzaMenu = new ArrayList<>(); // Arraylist to store CSV lines
 
         try {
