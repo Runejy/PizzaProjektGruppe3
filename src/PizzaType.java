@@ -15,8 +15,4 @@ public class PizzaType {
         this.description = description;
         menu.add(this);
     }
-
-    public static void initializeMenu() {
-
-    }
 }
