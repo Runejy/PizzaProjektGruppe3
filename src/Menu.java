@@ -11,12 +11,15 @@ import java.util.ArrayList;
 
 public class Menu {
 
+    //--global variables--
+
     //ArrayList for storing each pizzaType
     private static final ArrayList<PizzaType> menuList = new ArrayList<>();
 
     //ArrayList of String arrays for storing the info necessary for building each pizzaType object
     private static final ArrayList<String[]> pizzaInfo = new ArrayList<>();
 
+    //--various methods--
     private static void add(PizzaType pt) {
         menuList.add(pt);
     }
