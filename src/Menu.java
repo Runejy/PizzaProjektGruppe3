@@ -71,7 +71,7 @@ public class Menu {
                 pizzaInfo.add(line);
             }
 
-            System.out.println("Indlæste " + (csvReader.getLinesRead() - 1) + " pizzaer i menuen");
+            System.out.println("Indlæste " + (csvReader.getLinesRead() - 1) + " pizzaer i menuen\n");
 
         } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
