@@ -1,32 +1,33 @@
 public class Pizza {
-    //instance fields here
-    int number;
-    String name;
-    String description;
-    int price;
 
-    public Pizza(int number, String name, String description, int price) {
-        this.number = number;
-        this.name = name;
-        this.description = description;
-        this.price = price;
+    //--instance fields--
+    private final PizzaType type;
+
+    //--Constructor--
+    public Pizza(PizzaType type) {
+        this.type = type;
     }
 
-    public int getPrice() {
-        return price;
+    //--getters--
+    public int getNumber() {
+        return type.getNumber();
     }
 
     public String getName() {
-        return name;
+        return type.getName();
     }
 
+    public String getDescription() {
+        return type.getDescription();
+    }
 
+    public double getPrice() {
+        return type.getPrice();
+    }
+
+    //--other methods--
+    @Override
     public String toString() {
-        return "";
-    }
-
-    //static method to print all available pizzas
-    public static void getAvailablePizzas() {
-
+        return this.getName();
     }
 }
