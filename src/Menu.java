@@ -65,12 +65,14 @@ public class Menu {
                 .withSkipLines(1)
                 .build()) {
 
-
             //read CSV file and send to pizzaInfo list
             String[] line;
             while ((line = csvReader.readNext()) != null) {
                 pizzaInfo.add(line);
             }
+
+            System.out.println("Indlæste " + (csvReader.getLinesRead() - 1) + " pizzaer i menuen");
+
         } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
         }
