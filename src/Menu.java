@@ -17,7 +17,7 @@ public class Menu {
     //ArrayList of String arrays for storing the info necessary for building each pizzaType object
     private static final ArrayList<String[]> pizzaInfo = new ArrayList<>();
 
-    public static void add(PizzaType pt) {
+    private static void add(PizzaType pt) {
         menuList.add(pt);
     }
 
