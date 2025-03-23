@@ -59,7 +59,7 @@ public class Menu {
             throw new RuntimeException(e);
         }
 
-        //create new pizzaType objects for each array in Arraylist
+        //create new pizzaType objects for each array in Arraylist and add them to menuList
         try {
             for (String[] pizza : pizzaInfo) {
                 int number = Integer.parseInt(pizza[0]);
