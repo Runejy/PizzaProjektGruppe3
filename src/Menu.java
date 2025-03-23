@@ -16,10 +16,6 @@ public class Menu {
     //ArrayList for storing each pizzaType
     private static final ArrayList<PizzaType> menuList = new ArrayList<>();
 
-    //ArrayList of String arrays for storing the info necessary for building each pizzaType object
-    private static final ArrayList<String[]> pizzaInfo = new ArrayList<>();
-
-
     //--getters--
     public static PizzaType getType(int index) {
         try {
@@ -46,6 +42,9 @@ public class Menu {
     }
 
     public static void initializeMenu() {
+
+        //local ArrayList of String arrays for storing information about each type of pizza
+        ArrayList<String[]> pizzaInfo = new ArrayList<>();
 
         //check if  menu file exists
         File menuFile = new File("menu.csv");
