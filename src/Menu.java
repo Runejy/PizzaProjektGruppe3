@@ -60,14 +60,18 @@ public class Menu {
         }
 
         //create new pizzaType objects for each array in Arraylist
-        for (String[] pizza : pizzaInfo) {
-            int number = Integer.parseInt(pizza[0]);
-            String name = pizza[1];
-            String description = pizza[2];
-            double price = Double.parseDouble(pizza[3]);
+        try {
+            for (String[] pizza : pizzaInfo) {
+                int number = Integer.parseInt(pizza[0]);
+                String name = pizza[1];
+                String description = pizza[2];
+                double price = Double.parseDouble(pizza[3]);
 
-            PizzaType pizzaType = new PizzaType(number, name, description, price);
-            Menu.add(pizzaType);
+                PizzaType pizzaType = new PizzaType(number, name, description, price);
+                Menu.add(pizzaType);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Kunne ikke indlæse menu. Vær venligst sikker på at den er indskrevet i korrekt format");
         }
 
         //throw error if there are no pizzas in menu.csv
