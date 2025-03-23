@@ -19,6 +19,20 @@ public class Menu {
     //ArrayList of String arrays for storing the info necessary for building each pizzaType object
     private static final ArrayList<String[]> pizzaInfo = new ArrayList<>();
 
+
+    //--getters--
+    public static PizzaType getType(int index) {
+        try {
+            return menuList.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            throw new IndexOutOfBoundsException("You attempted to create a pizza of a type that does not exist on menu");
+        }
+    }
+
+    public static int getLength() {
+        return menuList.size();
+    }
+
     //--various methods--
     private static void add(PizzaType pt) {
         menuList.add(pt);
