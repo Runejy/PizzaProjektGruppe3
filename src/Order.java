@@ -5,9 +5,9 @@ public class Order {
 
     //--instance fields--
     //static list of all current orders
-    private static ArrayList<Order> orderList = new ArrayList<>();
+    private static final ArrayList<Order> orderList = new ArrayList<>();
     //ArrayList of arrays for each ordered item (each orderline should have an entry and an amount)
-    private ArrayList<OrderLine> orderedItemsList = new ArrayList<>();
+    private final ArrayList<OrderLine> orderedItemsList = new ArrayList<>();
     //insert collection time in time format here:
     private String customerFirstName;
     private int customerPhone;
