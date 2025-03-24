@@ -3,86 +3,105 @@ import java.util.Scanner;
 
 public class Order {
 
-    int pizzaID;
-    double time;
-    String name;
-    int phoneNr;
-    double totalPrice;
+    //--instance fields--
+    //static list of all current orders
+    private static ArrayList<Order> orderList = new ArrayList<>();
+    //ArrayList of arrays for each ordered item (each orderline should have an entry and an amount)
+    private ArrayList<OrderLine> orderedItemsList = new ArrayList<>();
+    //insert collection time in time format here:
+    private String customerFirstName;
+    private int customerPhone;
+    private double totalPrice;
 
-    Scanner input = new Scanner(System.in);
-    String stringInput = input.nextLine();
-
-    //constructor method (remember to add order to orders ArrayList)
-    public Order(int pizzaID, double time, String name, int phoneNr, double totalPrice) {
-        this.pizzaID =pizzaID;
-        this.name = name;
-        this.time = time;
-        this.phoneNr = phoneNr;
-        this.totalPrice = totalPrice;
+    //constructor
+    public Order() {
+        orderList.add(this);
     }
 
     //---non-static methods---
 
-    //getCollectionTime
-    public double getCollectionTime() {
-        return time;
+    //--setters--
+    public void setCustomerFirstName(String firstName) {
+        this.customerFirstName = firstName;
     }
 
-    //getTotalPrice
+    public void setCustomerPhone(int phoneNumber) {
+        this.customerPhone = phoneNumber;
+    }
+
+    //--getters
+    public String getCustomerFirstName() {
+        return this.customerFirstName;
+    }
+
+    public int getCustomerPhone() {
+        return this.customerPhone;
+    }
+
     public double getTotalPrice() {
-        return totalPrice;
+        return this.totalPrice;
     }
 
-    //getCustomerPhone
-    public int getPhoneNr() {
-        return phoneNr;
+    //--other methods--
+    public void addItem(int pizzaNumber) {
+
+        Pizza pizza = new Pizza(Menu.getType(pizzaNumber));
+        //update totalPrice
+        this.totalPrice += pizza.getPrice();
+
+        //check if an orderLine in orderedItemsList already has that item
+        for (OrderLine orderLine : orderedItemsList) {
+            if (orderLine.getPizzaName().equals(pizza.getName())) {
+
+                //if it does increment that orderLine by 1
+                orderLine.incrementAmount(1);
+
+                //exit early
+                return;
+            }
+        }
+
+        //if item is not found in orderedItemsList, create a new orderLine with the item
+        OrderLine orderLine = new OrderLine(pizza);
+
+        //add it to the ArrayList of orderLines
+        orderedItemsList.add(orderLine);
     }
 
-    //getCustomerFirstName
-    public String getName() {
-        return name;
-    }
+    //maybe a removeItem method here?
 
-    //getPizzas (return all ordered pizzas, maybe as an arraylist)
-    public Order getOrder() {
-        return this;
-    }
-
-    //toString (return all pertinent information about order as string)
+    @Override
     public String toString() {
-        return "";
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (OrderLine orderLine : orderedItemsList) {
+            stringBuilder.append("•").append(orderLine).append("\n");
+        }
+
+
+
+        return String.format("""
+                %s
+                Totalpris: %.2f dkk
+                Afhentes af: %s
+                Klokken: indsæt klokkeslet her
+                ----------
+                """,stringBuilder, this.getTotalPrice(), this.getCustomerFirstName());
     }
 
-    //mangler Scanner til telefonNr og en scanner til navn (Tiden er der en indbygget funktion til)
-    // @Override
-    //   public String toString() {
-    //     String s = "Navn;" + name + "\n tiden er; " + time + "\n telefon nr; " + phoneNr;
-    //   return s;
-    // }
+    //--static methods--
+    public static String getAllOrders() {
 
-    //public addOrder() {
-    //  System.out.println("Skriv venligst følgende oplysninger: order, time, name, phineNr and totalPrice");
-    //input =
-    //}
+        StringBuilder stringBuilder = new StringBuilder();
 
-    //public void addPizza () {
-    //  System.out.println("Vælg venligst den pizza du vil have");
-    //input = add.nextLine();
-    // input
+        for (Order order : orderList) {
+            stringBuilder.append(order.toString());
+        }
 
-    //}
+        return stringBuilder.toString();
+    }
 
-    //getPizzas (return all ordered pizzas, maybe as an arraylist)
-
-    //getTotalPrice
-
-    //getCustomerFirstName
-
-    //getCustomerPhone
-
-    //getCollectionTime
-
-    //---static methods---
 
 
 }
