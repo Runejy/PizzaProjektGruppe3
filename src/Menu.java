@@ -17,9 +17,9 @@ public class Menu {
     private static final ArrayList<PizzaType> menuList = new ArrayList<>();
 
     //--getters--
-    public static PizzaType getType(int index) {
+    public static PizzaType getType(int pizzaNumber) {
         try {
-            return menuList.get(index);
+            return menuList.get(pizzaNumber-1);
         } catch (IndexOutOfBoundsException e) {
             throw new IndexOutOfBoundsException("You attempted to create a pizza of a type that does not exist on menu");
         }
@@ -70,8 +70,6 @@ public class Menu {
             while ((line = csvReader.readNext()) != null) {
                 pizzaInfo.add(line);
             }
-
-            System.out.println("Indlæste " + (csvReader.getLinesRead() - 1) + " pizzaer i menuen\n");
 
         } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
