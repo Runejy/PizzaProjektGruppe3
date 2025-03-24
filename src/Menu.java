@@ -60,10 +60,12 @@ public class Menu {
                 .build();
 
         //build CSV reader using openCSV in try-with-resources block (auto closes csvReader after use
-        try (CSVReader csvReader = new CSVReaderBuilder(Files.newBufferedReader(menuFile.toPath()))
+        try (
+                CSVReader csvReader = new CSVReaderBuilder(Files.newBufferedReader(menuFile.toPath()))
                 .withCSVParser(parser)
                 .withSkipLines(1)
-                .build()) {
+                .build();
+        ) {
 
             //read CSV file and send to pizzaInfo list
             String[] line;
