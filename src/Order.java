@@ -91,12 +91,12 @@ public class Order {
                 %s
                 Totalpris: %.2f dkk
                 Afhentes af: %s
-                Klokken: indsæt klokkeslet her
+                Klokken: %s
                 ----------
                 """,stringBuilder,
                 this.getTotalPrice(),
                 this.getCustomerFirstName(),
-                (this.collectionTime != null ? this.collectionTime.toString() : "Indsæt klokkeslet her"));
+                (this.collectionTime != null ? this.collectionTime.toString() : "Intet afhentningstidspunkt defineret"));
     }
 
     //--static methods--
