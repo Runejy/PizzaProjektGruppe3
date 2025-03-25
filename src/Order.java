@@ -1,5 +1,6 @@
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.*;
 
 public class Order {
 
@@ -86,6 +87,7 @@ public class Order {
     //sortOrders method:
     public static void sortOrderList() {
         //probably a orderList.sort() call here
+        Collections.sort(orderList, Comparator.comparing(Order :: getCollectionTime));
     }
 
     @Override
