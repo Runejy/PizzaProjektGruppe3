@@ -31,8 +31,11 @@ public class Order {
 
     }
 
-    public void setCollectionTime(LocalTime collectionTime) {
-        this.collectionTime = collectionTime;
+    public void setCollectionTime(String time) {
+
+        String[] times = time.split(":");
+
+        this.collectionTime = LocalTime.of(Integer.parseInt(times[0]), Integer.parseInt(times[1]));
     }
 
     //--getters
