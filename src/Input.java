@@ -65,4 +65,29 @@ public class Input {
             return String.valueOf(userInt);
         }
     }
+
+    //method for getting time as String of format "hh:mm"
+    public static String getTime() {
+
+      while(true) {
+
+          userInput = getUserString();
+
+          try {
+              String[] time = userInput.split(":");
+              int hours = Integer.parseInt(time[0]);
+              int minutes = Integer.parseInt(time[1]);
+
+              if ((hours > 23 || hours < 0) || (minutes > 59 || minutes < 0)) {
+                  throw new Exception();
+              }
+          } catch (Exception e) {
+              System.out.println("Indtast venligst et gyldigt tidspunkt!");
+              continue;
+          }
+          break;
+      }
+
+        return userInput;
+    }
 }
