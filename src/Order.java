@@ -35,7 +35,11 @@ public class Order {
 
         String[] times = time.split(":");
 
-        this.collectionTime = LocalTime.of(Integer.parseInt(times[0]), Integer.parseInt(times[1]));
+        try {
+            this.collectionTime = LocalTime.of(Integer.parseInt(times[0]), Integer.parseInt(times[1]));
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Collection time not a valid time!");
+        }
     }
 
     //--getters
