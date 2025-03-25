@@ -1,3 +1,4 @@
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Order {
@@ -10,13 +11,16 @@ public class Order {
     //ArrayList of arrays for each ordered item (each orderline should have an entry and an amount)
     private final ArrayList<OrderLine> orderedItemsList = new ArrayList<>();
 
-    //insert collectionTime in time format here:
+    //Collection time in Localtime Format
+    private LocalTime collectionTime;
+
     private String customerFirstName;
     private double totalPrice;
 
     //constructor
     public Order() {
         orderList.add(this);
+
     }
 
     //---non-static methods---
@@ -24,10 +28,11 @@ public class Order {
     //--setters--
     public void setCustomerFirstName(String firstName) {
         this.customerFirstName = firstName;
+
     }
 
-    public void setCustomerPhone(int phoneNumber) {
-        this.customerPhone = phoneNumber;
+    public void setCollectionTime(LocalTime collectionTime) {
+        this.collectionTime = collectionTime;
     }
 
     //--getters
@@ -37,6 +42,10 @@ public class Order {
 
     public double getTotalPrice() {
         return this.totalPrice;
+    }
+
+    public LocalTime getCollectionTime() {
+        return this.collectionTime;
     }
 
     //--other methods--
@@ -84,7 +93,10 @@ public class Order {
                 Afhentes af: %s
                 Klokken: indsæt klokkeslet her
                 ----------
-                """,stringBuilder, this.getTotalPrice(), this.getCustomerFirstName());
+                """,stringBuilder,
+                this.getTotalPrice(),
+                this.getCustomerFirstName(),
+                (this.collectionTime != null ? this.collectionTime.toString() : "Indsæt klokkeslet her"));
     }
 
     //--static methods--
