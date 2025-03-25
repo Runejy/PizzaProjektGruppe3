@@ -15,7 +15,7 @@ public class Input {
             userInput = sc.next();
             userInput += sc.nextLine();
         } catch (Exception e) {
-            System.out.println("An error occured: " + e);
+            System.out.println("An error occurred: " + e);
         }
 
         return userInput;
@@ -75,6 +75,7 @@ public class Input {
 
           try {
               String[] time = userInput.split(":");
+
               int hours = Integer.parseInt(time[0]);
               int minutes = Integer.parseInt(time[1]);
 
@@ -87,7 +88,6 @@ public class Input {
           }
           break;
       }
-
         return userInput;
     }
 }
