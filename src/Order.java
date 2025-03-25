@@ -83,6 +83,11 @@ public class Order {
 
     //maybe a removeItem method here?
 
+    //sortOrders method:
+    public static void sortOrderList() {
+        //probably a orderList.sort() call here
+    }
+
     @Override
     public String toString() {
 
