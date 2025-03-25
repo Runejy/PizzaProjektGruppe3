@@ -12,7 +12,6 @@ public class Order {
 
     //insert collectionTime in time format here:
     private String customerFirstName;
-    private int customerPhone;
     private double totalPrice;
 
     //constructor
@@ -34,10 +33,6 @@ public class Order {
     //--getters
     public String getCustomerFirstName() {
         return this.customerFirstName;
-    }
-
-    public int getCustomerPhone() {
-        return this.customerPhone;
     }
 
     public double getTotalPrice() {
