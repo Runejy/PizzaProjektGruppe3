@@ -3,21 +3,39 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+
+import java.io.FileWriter;
+import java.io.Writer;
+import java.util.List;
+
+import com.opencsv.bean.CsvBindByName;
+
 public class Order {
+
 
     //--instance fields--
 
     //static list of all current orders
     private static final ArrayList<Order> orderList = new ArrayList<>();
 
+    //Collection time in Localtime Format
+    @CsvBindByName(column = "Collection Time")
+    private LocalTime collectionTime;
+
+    @CsvBindByName(column = "Customer Name")
+    private String customerFirstName;
+
+    @CsvBindByName(column = "Total Price (DKK)")
+    private double totalPrice;
+
+    @CsvBindByName(column = "Ordered Items")
+    private String orderedItems;
+
     //ArrayList of arrays for each ordered item (each orderline should have an entry and an amount)
     private final ArrayList<OrderLine> orderedItemsList = new ArrayList<>();
 
-    //Collection time in Localtime Format
-    private LocalTime collectionTime;
-
-    private String customerFirstName;
-    private double totalPrice;
 
     //constructor
     public Order() {
@@ -50,12 +68,18 @@ public class Order {
     }
 
     public double getTotalPrice() {
-        return this.totalPrice;
+        return (this.totalPrice);
     }
 
     public LocalTime getCollectionTime() {
         return this.collectionTime;
+
     }
+
+    public String getOrderedItems() {
+        return orderedItemsList.toString();
+    }
+
 
     //--other methods--
     public void addItem(int pizzaNumber) {
@@ -84,7 +108,7 @@ public class Order {
         orderedItemsList.add(orderLine);
     }
 
-    public void removeItem (int pizzaNumber){
+    public void removeItem(int pizzaNumber) {
 
         Pizza pizza = new Pizza(Menu.getType(pizzaNumber));
 
@@ -120,24 +144,56 @@ public class Order {
         }
 
 
-
         return String.format("""
-                %s
-                Totalpris: %.2f dkk
-                Afhentes af: %s
-                Klokken: %s
-                ----------
-                """,stringBuilder,
+                        %s
+                        Totalpris: %.2f dkk
+                        Afhentes af: %s
+                        Klokken: %s
+                        ----------
+                        """, stringBuilder,
                 this.getTotalPrice(),
                 this.getCustomerFirstName(),
                 (this.collectionTime != null ? this.collectionTime.toString() : "Intet afhentningstidspunkt defineret"));
     }
 
+    public static void writeOrderToFile(String MariosOrders) {
+        try (Writer writer = new FileWriter(MariosOrders, true)) {
+            if (new java.io.File(MariosOrders).length() == 0) {
+            }
+            // Initialize CSV Writer
+            StatefulBeanToCsv<Order> beanToCsv = new StatefulBeanToCsvBuilder<Order>(writer)
+                    .withSeparator(';')
+                    .build();
+            // Get the orders
+            List<Order> orders = Order.getOrderList();
+
+            // If no orders, exit
+            if (orders.isEmpty()) {
+                System.out.println("No orders to write.");
+                return;
+            }
+            // Write orders to the CSV
+            beanToCsv.write(orders);
+            // Calculate and write the total sum
+            double totalSum = orders.stream().mapToDouble(Order::getTotalPrice).sum();
+            writer.write("\n;;---------------------\n");
+            writer.write(String.format(";;Total Sum: %.2f DKK\n", totalSum));
+            writer.write(";;---------------------\n");
+            writer.flush(); // Ensure data is written
+            System.out.println("Orders with total sum written to " + MariosOrders);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Order> getOrderList() {
+        return orderList;
+
+    }
+
     //--static methods--
     public static String getAllOrders() {
-
         StringBuilder stringBuilder = new StringBuilder();
-
         for (Order order : orderList) {
             stringBuilder.append(order.toString());
         }
@@ -146,6 +202,4 @@ public class Order {
     }
 
 
-
 }
-
