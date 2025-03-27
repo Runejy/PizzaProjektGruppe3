@@ -76,11 +76,29 @@ public class Order {
             }
         }
 
+
         //if item is not found in orderedItemsList, create a new orderLine with the item
         OrderLine orderLine = new OrderLine(pizza);
 
         //add it to the ArrayList of orderLines
         orderedItemsList.add(orderLine);
+    }
+
+    public void removeItem (int pizzaNumber){
+
+        Pizza pizza = new Pizza(Menu.getType(pizzaNumber));
+
+        //check if an orderLine in orderedItemsList already has that item
+        for (OrderLine orderLine : orderedItemsList) {
+            if (orderLine.getPizzaName().equals(pizza.getName())) {
+
+                //if it does, do we reduce the amount of tht pizza
+                orderLine.incrementAmount(-1);
+
+                //exit early
+                return;
+            }
+        }
     }
 
     //maybe a removeItem method here?
