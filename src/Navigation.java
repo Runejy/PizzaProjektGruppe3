@@ -130,7 +130,7 @@ public class Navigation {
             System.out.println(order.getPizzas());
 
             System.out.println("""
-                    1: tilføj pizza til ordre
+                    1: Tilføj pizza til ordre
                     2: Fuldfør
                     3: Tilbage""");
 

@@ -32,6 +32,8 @@ public class Order {
     @CsvBindByName(column = "Ordered Items")
     private String orderedItems;
 
+    private boolean completed;
+
     //ArrayList of arrays for each ordered item (each orderline should have an entry and an amount)
     private final ArrayList<OrderLine> orderedItemsList = new ArrayList<>();
 
@@ -76,6 +78,9 @@ public class Order {
     public String getOrderedItems() {
         return orderedItemsList.toString();
     }
+    public boolean isCompleted() {
+        return completed;
+    }
 
 
     //--other methods--
@@ -119,9 +124,13 @@ public class Order {
         return stringBuilder.toString();
     }
 
-    //method for completing order, should call static removeOrder method on itself after writing to CSV
+    //method for completing order
     public void complete() {
         //write to csv file here
+        this.completed = true;
+
+        //Write only completed orders to the csv file
+        writeOrderToFile("MariosOrders.csv");
 
         Order.removeOrder(this);
     }
@@ -154,18 +163,22 @@ public class Order {
         try (Writer writer = new FileWriter(MariosOrders, true)) {
             if (new java.io.File(MariosOrders).length() == 0) {
             }
+            //Filter only completed orders
+            List<Order> orders = Order.getOrderList().stream()
+                    .filter(Order::isCompleted)
+                    .toList();
+
+            // If no orders, exit
+            if (orders.isEmpty()) {
+                System.out.println("No completed orders to write.");
+                return;
+            }
+
             // Initialize CSV Writer
             StatefulBeanToCsv<Order> beanToCsv = new StatefulBeanToCsvBuilder<Order>(writer)
                     .withSeparator(';')
                     .build();
-            // Get the orders
-            List<Order> orders = Order.getOrderList();
 
-            // If no orders, exit
-            if (orders.isEmpty()) {
-                System.out.println("No orders to write.");
-                return;
-            }
             // Write orders to the CSV
             beanToCsv.write(orders);
             // Calculate and write the total sum
@@ -229,4 +242,3 @@ public class Order {
 
 
 }
-
