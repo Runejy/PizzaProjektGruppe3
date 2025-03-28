@@ -131,7 +131,7 @@ public class Order {
 
     public static void sortOrderList() {
         //probably a orderList.sort() call here
-        Collections.sort(orderList, Comparator.comparing(Order :: getCollectionTime));
+        orderList.sort(Comparator.comparing(Order::getCollectionTime));
     }
 
     public static Order getOrder(int orderNumber) {
