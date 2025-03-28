@@ -43,27 +43,155 @@ public class Navigation {
 
     public static void showOrdersMenu() {
 
-        System.out.println("=== Ordreliste ===");
+        while(true) {
+            System.out.println("=== Ordreliste ===");
 
-        //if order list is empty, print that
+            //if order list is empty, print that
+            if (Order.getAmountOfOrders() == 0) {
+                System.out.println("Ingen ordrer at vise");
+            } else {
+                //print all orders as unordered list, sorted by time (soonest first)
+                System.out.println(Order.getAllOrders());
+            }
 
-        //print all orders as unordered list, sorted by time (soonest first)
+            //options to add, complete or cancel an order
+            System.out.println("""
+                    1: Tilføj ordre
+                    2: Fuldfør ordre
+                    3: Annuller Ordre
+                    4: Tilbage""");
 
-        //options to add, complete or cancel an order
+            userInput = Input.getUserNumber(4);
+
+            switch (userInput) {
+                case "1" :
+                    addOrderMenu();
+                    break;
+                case "2" :
+                    if (Order.getAmountOfOrders() == 0) {
+                        System.out.println("Der er ingen ordrer at fuldføre");
+                        continue;
+                    }
+                    completeOrderMenu();
+                    break;
+                case "3" :
+                    if (Order.getAmountOfOrders() == 0) {
+                        System.out.println("Der er ingen ordrer at annullere");
+                        continue;
+                    }
+                    cancelOrderMenu();
+                    break;
+                case "4" :
+                    return;
+            }
+        }
+    }
+
+    public static void completeOrderMenu() {
+
+        System.out.println("Vælg en ordre at fuldføre:");
+        System.out.println(Order.getOrdersAsNumberedList());
+        System.out.println((Order.getAmountOfOrders()+1) + ": tilbage");
+
+        userInput = Input.getUserNumber(Order.getAmountOfOrders()+1);
+
+        if (Integer.parseInt(userInput) == Order.getAmountOfOrders()+1) {
+            return;
+        }
+
+        Order.getOrder(Integer.parseInt(userInput)).complete();
+    }
+
+    public static void cancelOrderMenu() {
+
+        System.out.println("Vælg en ordre at annullere:");
+        System.out.println(Order.getOrdersAsNumberedList());
+        System.out.println((Order.getAmountOfOrders()+1) + ": tilbage");
+
+        userInput = Input.getUserNumber(Order.getAmountOfOrders()+1);
+
+        if (Integer.parseInt(userInput) == Order.getAmountOfOrders()+1) {
+            return;
+        }
+
+        Order.removeOrder(Order.getOrder(Integer.parseInt(userInput)));
     }
 
     public static void addOrderMenu() {
 
+        //create new order
+        Order order = new Order();
+
         while(true) {
 
-            System.out.println("Hvilken pizza vil du have?");
+            System.out.println("Ordre:");
+
+            //print pizzas currently in order (empty when first entering this menu)
+            System.out.println(order.getPizzas());
+
+            System.out.println("""
+                    1: tilføj pizza til ordre
+                    2: Fuldfør
+                    3: Tilbage""");
 
             //handle userInput here
-            userInput = Input.getUserString();
+            userInput = Input.getUserNumber(3);
 
-            //ask when the pizza will be collected
+            switch (userInput) {
+                case "1" :
+                    addPizzasToOrderMenu(order);
+                    break;
+                case "2" :
+                    //Go to next iteration of loop if order has no pizzas yet
+                    if (order.isEmpty()) {
+                        System.out.println("Du kan ikke fuldføre en tom ordre!");
+                        continue;
+                    }
 
-            //handle userInput and save it as a localTime type
+                    //if user has entered pizzas into the order, allow them to complete the order by ensuring they give a name and a collection time
+                    System.out.println("Hvem afhenter ordren? (fornavn)");
+
+                    userInput = Input.getUserString();
+
+                    order.setCustomerFirstName(userInput);
+
+                    System.out.println("Hvornår afhentes ordren? (hh:mm)");
+
+                    userInput = Input.getTime();
+
+                    order.setCollectionTime(userInput);
+
+                    //after finishing the order, sort the list of total orders
+                    Order.sortOrderList();
+
+                    return;
+                case "3" :
+                    //Remove order from ArrayList of orders
+                    Order.removeOrder(order);
+                    return;
+            }
         }
+    }
+
+    public static void addPizzasToOrderMenu(Order order) {
+
+        System.out.println("Tilføj en pizza:");
+
+        //Print available menu
+        Menu.printMenu();
+
+        //after printing all available pizzas, print option to go back to previous menu
+        System.out.println((Menu.getLength()+1) + ": Tilbage");
+
+        //get userInput with valid number (amount of pizzas + 1)
+        userInput = Input.getUserNumber(Menu.getLength()+1);
+
+        //if user chooses to go back, return to previous menu
+        if (userInput.equals(String.valueOf(Menu.getLength()+1))) {
+            return;
+        }
+
+        //if user hasn't chosen to go back, that means they chose one of the available pizzas to add to the order
+        order.addItem(Integer.parseInt(userInput));
     }
 }
