@@ -97,6 +97,13 @@ public class Order {
         return stringBuilder.toString();
     }
 
+    //method for completing order, should call static removeOrder method on itself after writing to CSV
+    public void complete() {
+        //write to csv file here
+
+        Order.removeOrder(this);
+    }
+
     @Override
     public String toString() {
 
@@ -127,6 +134,10 @@ public class Order {
         Collections.sort(orderList, Comparator.comparing(Order :: getCollectionTime));
     }
 
+    public static Order getOrder(int orderNumber) {
+        return orderList.get(orderNumber-1);
+    }
+
     public static void removeOrder(Order order) {
         orderList.remove(order);
     }
@@ -134,6 +145,20 @@ public class Order {
     public static int getAmountOfOrders() {
         return orderList.size();
     }
+
+    public static String getOrdersAsNumberedList() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        int orderNumber = 1;
+        for (Order order : orderList) {
+            stringBuilder.append(orderNumber).append(":\n").append(order.toString());
+            orderNumber++;
+        }
+
+        return stringBuilder.toString();
+    }
+
     public static String getAllOrders() {
 
         StringBuilder stringBuilder = new StringBuilder();
