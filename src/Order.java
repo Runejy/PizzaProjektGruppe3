@@ -83,14 +83,6 @@ public class Order {
         orderedItemsList.add(orderLine);
     }
 
-    //maybe a removeItem method here?
-
-    //sortOrders method:
-    public static void sortOrderList() {
-        //probably a orderList.sort() call here
-        Collections.sort(orderList, Comparator.comparing(Order :: getCollectionTime));
-    }
-
     @Override
     public String toString() {
 
@@ -115,6 +107,17 @@ public class Order {
     }
 
     //--static methods--
+
+    //sortOrders method:
+    public static void sortOrderList() {
+        //probably a orderList.sort() call here
+        Collections.sort(orderList, Comparator.comparing(Order :: getCollectionTime));
+    }
+
+    public static void removeOrder(Order order) {
+        orderList.remove(order);
+    }
+
     public static int getAmountOfOrders() {
         return orderList.size();
     }
