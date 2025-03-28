@@ -4,15 +4,33 @@ public class Test {
 
         Menu.initializeMenu();
 
-        Order order = new Order();
-        order.setCustomerFirstName("John");
-        order.addItem(14);
-        order.addItem(14);
-        order.addItem(13);
+
+        Order order1 = new Order();
+        order1.setCustomerFirstName("Jens");
         System.out.println("Hvornår skal ordren hentes?");
         String userInput = Input.getTime();
-        order.setCollectionTime(userInput);
+        order1.setCollectionTime(userInput);
+        order1.addItem(1);
+        order1.addItem(1);
+        order1.addItem(1);
 
-        System.out.println(Order.getAllOrders());
+        Order order2 = new Order();
+        order2.setCustomerFirstName("Søren");
+        System.out.println("Hvornår skal ordren hentes?");
+        String userInput1 = Input.getTime();
+        order2.setCollectionTime(userInput1);
+        order2.addItem(2);
+        order2.addItem(5);
+
+        Order.writeOrderToFile("MariosOrders.csv");
+
+
+
+
+
+
+
+
+
     }
 }
