@@ -22,7 +22,6 @@ public class Order {
     //constructor
     public Order() {
         orderList.add(this);
-
     }
 
     //---non-static methods---
@@ -83,6 +82,21 @@ public class Order {
         orderedItemsList.add(orderLine);
     }
 
+    public boolean isEmpty() {
+        return orderedItemsList.isEmpty();
+    }
+
+    public String getPizzas() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (OrderLine orderLine : orderedItemsList) {
+            stringBuilder.append("•").append(orderLine).append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
+
     @Override
     public String toString() {
 
@@ -108,7 +122,6 @@ public class Order {
 
     //--static methods--
 
-    //sortOrders method:
     public static void sortOrderList() {
         //probably a orderList.sort() call here
         Collections.sort(orderList, Comparator.comparing(Order :: getCollectionTime));
