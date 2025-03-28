@@ -115,6 +115,9 @@ public class Order {
     }
 
     //--static methods--
+    public static int getAmountOfOrders() {
+        return orderList.size();
+    }
     public static String getAllOrders() {
 
         StringBuilder stringBuilder = new StringBuilder();
