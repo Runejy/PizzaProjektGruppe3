@@ -148,6 +148,8 @@ public class Order {
                 (this.collectionTime != null ? this.collectionTime.toString() : "Intet afhentningstidspunkt defineret"));
     }
 
+    //--static methods--
+
     public static void writeOrderToFile(String MariosOrders) {
         try (Writer writer = new FileWriter(MariosOrders, true)) {
             if (new java.io.File(MariosOrders).length() == 0) {
@@ -182,8 +184,6 @@ public class Order {
         return orderList;
 
     }
-
-    //--static methods--
 
     public static void sortOrderList() {
         //probably a orderList.sort() call here
